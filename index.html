@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grade calculator 💡</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-top: 90px;
+            margin-left: 400px;
+            min-height: 100vh;
+            background: #F5F5F7;
+        }
+        .box {
+            position: relative;
+            width: 700px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #F4F4F6;
+
+            box-shadow: -10px -10px 15px rgb(236, 234, 234),
+            10px 10px 10px rgb(207, 202, 202); 
+            border-radius: 20PX;
+        }
+        .credits {
+          margin-left: 20px;
+        }
+        input {
+    box-shadow: inset 3px 6px 5px #d2d2d4,inset -5px -5px 10px #fff; 
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    font-size: 16px;
+   border-radius: 10px;
+   padding: 10px;
+    background-color: #F4F4F6;
+
+}
+.ip1,.ip2,.ip3,.ip4,.ip5,.ip6,.ip7,.ip8 {
+    padding-bottom: 20px;
+}
+button{
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    width: 170px;
+    height: 40px;
+    line-height: 1;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: none;
+    background-color: #fc5296;
+background-image: linear-gradient(315deg, #fc5296 0%, #f67062 74%); 
+    margin-top: 250px;
+    margin-right: 100px;
+    color: #DCE8E7;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .35s;
+}
+button:hover{
+    background: #8C82FC;
+    color: #fff;
+  }
+  h1 {
+      padding-left: 70px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fc5296;
+background-image: linear-gradient(315deg, #fc5296 0%, #f67062 74%); 
+-webkit-text-fill-color: transparent;
+-webkit-background-clip: text;
+font-weight: bold;
+  }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+        <div class="content">
+          <div>
+            <h1>SGPA CALCULATOR</h1>
+          </div>
+      <div class="ip">
+      <div class="ip1">
+        <input class="subject" placeholder="subject1" />
+        <input class="credits" placeholder="credits1" />
+      </div>
+      <div class="ip2">
+        <input class="subject" placeholder="subject2" />
+        <input class="credits" placeholder="credits2" />
+      </div>
+      <div class="ip8">
+        <input class="subject" placeholder="subject3" />
+        <input class="credits" placeholder="credits3" />
+      </div>
+      <div class="ip3">
+        <input class="subject" placeholder="subject4" />
+        <input class="credits" placeholder="credits4" />
+      </div>
+      <div class="ip4">
+        <input class="subject" placeholder="subject5" />
+        <input class="credits" placeholder="credits5" />
+      </div>
+      <div class="ip5">
+        <input class="subject" placeholder="subject6" />
+        <input class="credits" placeholder="credits6" />
+      </div>
+        </div>
+      </div>
+    </div>
+        <a href="#" class="btn"><button onclick="getResult()">CALCULATE</button></a>
+  </body>
+
+  <script>
+    let marks = [];
+    let credits = [];
+    function getResult() {
+      // getting the html codes
+      let all_marks = Array.from(document.querySelectorAll(".subject"));
+      // getting the values from html input boxes
+      all_marks.forEach((node) => {
+        marks.push(node.value);
+      });
+
+      let all_credits = Array.from(document.querySelectorAll(".credits"));
+      // getting the values from html input boxes
+      all_credits.forEach((node) => {
+        credits.push(node.value);
+      });
+console.log(marks);
+console.log(credits);
+      let sum = 0;
+      let total_credits = 0;
+      // marks[0]*credits[0] + marks[1]*credits[1]...
+      for (let i = 0; i < 6; i++) {
+        sum = sum + marks[i] * credits[i];
+        total_credits += parseInt(credits[i]);
+      }
+      const h1 = document.createElement("h1");
+      h1.innerText = sum / total_credits;
+      h1.style.textAlign = "center";
+      document.body.append(h1);
+     
+    }
+  </script>
+  </html>
